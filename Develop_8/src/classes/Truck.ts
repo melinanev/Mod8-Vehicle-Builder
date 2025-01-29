@@ -47,6 +47,12 @@ class Truck extends Vehicle implements AbleToTow {
     this.topSpeed = topSpeed;
     this.wheels = wheels;
     this.towingCapacity = towingCapacity;
+
+    if (wheels.length !== 4) {
+      this.wheels = [new Wheel(), new Wheel(), new Wheel(), new Wheel()];
+    } else {
+      this.wheels = wheels;
+    }
   }
 
   // TODO: Implement the tow method from the AbleToTow interface
