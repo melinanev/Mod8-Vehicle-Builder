@@ -34,7 +34,7 @@ class Truck extends Vehicle implements AbleToTow {
     topSpeed: number, 
     wheels: Wheel[], 
     towingCapacity: number) 
-  
+
 
   { 
     super ();
