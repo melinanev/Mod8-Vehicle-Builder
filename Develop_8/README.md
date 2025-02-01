@@ -18,23 +18,29 @@ This project is a vehicle builder that allows users to create vehicles and perfo
 
 To install the project, run the following command:
 
+- Starter code provided by the course
+- npm install inquirer
+- npm install
+- npm run build
+
 
 ## Usage
 
 To use the project, run the following command:
 
+- npm start
 
 ## License
 
-none
+- none
 
 ## Contributors
 
-Melina Nevárez
+- Melina Nevárez
 
 ## Tests
 
-To run the tests, run the following command:
+- To run the tests, run the following command:
 
 
 ## Research
