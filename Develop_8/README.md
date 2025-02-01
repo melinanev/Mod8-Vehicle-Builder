@@ -39,12 +39,10 @@ To run the tests, run the following command:
 
 ## Research
 
-- Typescript
-    - What does Interface mean and do? 
-    - What does it mean to extend a class? 
-    - Understand what super () does and how to correctly add it. 
-    - Received suggestion to use instance of; Used CoPilot to nderstand what instanceof is used for and why it was suggested. 
-    - 
+- What does Interface mean and do? 
+- What does it mean to extend a class? 
+- Understand what super () does and how to correctly add it. 
+- Received suggestion to use instance of; Used CoPilot to nderstand what instanceof is used for and why it was suggested. 
 
 
 ## References
