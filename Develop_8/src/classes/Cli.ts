@@ -82,15 +82,18 @@ class Cli {
       year: number;
       weight: number;
       topSpeed: number;
+      wheel1Diameter: number;
+      wheel1Brand: string;
+      wheel2Diameter: number;
+      wheel2Brand: string;
+      wheel3Diameter: number;
+      wheel3Brand: string;
+      wheel4Diameter: number;
+      wheel4Brand: string;
     }
 
     inquirer
       .prompt([
-        {
-          type: 'input',
-          name: 'color',
-          message: 'Enter Color',
-        },
         {
           type: 'input',
           name: 'make',
@@ -108,6 +111,11 @@ class Cli {
         },
         {
           type: 'input',
+          name: 'color',
+          message: 'Enter Color',
+        },
+        {
+          type: 'input',
           name: 'weight',
           message: 'Enter Weight',
         },
@@ -115,6 +123,46 @@ class Cli {
           type: 'input',
           name: 'topSpeed',
           message: 'Enter Top Speed',
+        },
+        {
+          type: 'input',
+          name: 'wheel1Diameter',
+          message: 'Enter Diameter for Wheel 1',
+        },
+        {
+          type: 'input',
+          name: 'wheel1Brand',
+          message: 'Enter Brand for Wheel 1',
+        },
+        {
+          type: 'input',
+          name: 'wheel2Diameter',
+          message: 'Enter Diameter for Wheel 2',
+        },
+        {
+          type: 'input',
+          name: 'wheel2Brand',
+          message: 'Enter Brand for Wheel 2',
+        },
+        {
+          type: 'input',
+          name: 'wheel3Diameter',
+          message: 'Enter Diameter for Wheel 3',
+        },
+        {
+          type: 'input',
+          name: 'wheel3Brand',
+          message: 'Enter Brand for Wheel 3',
+        },
+        {
+          type: 'input',
+          name: 'wheel4Diameter',
+          message: 'Enter Diameter for Wheel 4',
+        },
+        {
+          type: 'input',
+          name: 'wheel4Brand',
+          message: 'Enter Brand for Wheel 4',
         },
       ])
       .then((answers: CarAnswers) => {
@@ -126,7 +174,12 @@ class Cli {
           answers.year,
           answers.weight,
           answers.topSpeed,
-          [new Wheel(), new Wheel(), new Wheel(), new Wheel()]
+          [
+            new Wheel(answers.wheel1Diameter, answers.wheel1Brand),
+            new Wheel(answers.wheel2Diameter, answers.wheel2Brand),
+            new Wheel(answers.wheel3Diameter, answers.wheel3Brand),
+            new Wheel(answers.wheel4Diameter, answers.wheel4Brand),
+          ]
         );
         // push the car to the vehicles array
         this.vehicles.push(car);
@@ -225,11 +278,6 @@ class Cli {
       .prompt([
         {
           type: 'input',
-          name: 'color',
-          message: 'Enter Color',
-        },
-        {
-          type: 'input',
           name: 'make',
           message: 'Enter Make',
         },
@@ -242,6 +290,11 @@ class Cli {
           type: 'input',
           name: 'year',
           message: 'Enter Year',
+        },
+        {
+          type: 'input',
+          name: 'color',
+          message: 'Enter Color',
         },
         {
           type: 'input',
