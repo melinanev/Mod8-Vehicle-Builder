@@ -7,14 +7,10 @@ import Wheel from "./Wheel.js";
 
 // define the Cli class
 class Cli {
-  // TODO: update the vehicles property to accept Truck and Motorbike objects as well
-  // TODO: You will need to use the Union operator to define additional types for the array
-  // TODO: See the AbleToTow interface for an example of how to use the Union operator
   vehicles: (Car | Truck | Motorbike)[];
   selectedVehicleVin: string | undefined;
   exit: boolean = false;
 
-  // TODO: Update the constructor to accept Truck and Motorbike objects as well
   constructor(vehicles: (Car | Truck | Motorbike)[]) {
     this.vehicles = vehicles;
   }
@@ -55,12 +51,11 @@ class Cli {
   // method to create a vehicle
   createVehicle(): void {
     inquirer
-    .prompt([
+      .prompt([
         {
           type: 'list',
           name: 'vehicleType',
           message: 'Select a vehicle type',
-          // TODO: Update the choices array to include Truck and Motorbike
           choices: ['Car', 'Truck', 'Motorbike'],
         },
       ])
@@ -75,7 +70,6 @@ class Cli {
           // create a motorbike
           this.createMotorbike();
         }
-        // TODO: add statements to create a truck or motorbike if the user selects the respective vehicle type        
       });
   }
 
@@ -125,7 +119,6 @@ class Cli {
       ])
       .then((answers: CarAnswers) => {
         const car = new Car(
-          // TODO: The generateVin method is static and should be called using the class name Cli, make sure to use Cli.generateVin() for creating a truck and motorbike as well!
           Cli.generateVin(),
           answers.color,
           answers.make,
@@ -133,7 +126,7 @@ class Cli {
           answers.year,
           answers.weight,
           answers.topSpeed,
-          []
+          [new Wheel(), new Wheel(), new Wheel(), new Wheel()]
         );
         // push the car to the vehicles array
         this.vehicles.push(car);
@@ -196,10 +189,6 @@ class Cli {
       ])
       .then((answers: TruckAnswers) => {
         const truck = new Truck(
-        // TODO: Use the answers object to pass the required properties to the Truck constructor
-        // TODO: push the truck to the vehicles array
-        // TODO: set the selectedVehicleVin to the vin of the truck
-        // TODO: perform actions on the truck
           Cli.generateVin(),
           answers.color,
           answers.make,
@@ -207,7 +196,7 @@ class Cli {
           answers.year,
           answers.weight,
           answers.topSpeed,
-          [],
+          [new Wheel(), new Wheel(), new Wheel(), new Wheel()],
           answers.towingCapacity, 
           
         );
@@ -306,7 +295,6 @@ class Cli {
   }
 
   // method to find a vehicle to tow
-  // TODO: add a parameter to accept a truck object
   findVehicleToTow(): void {
     inquirer
       .prompt([
@@ -323,16 +311,11 @@ class Cli {
         },
       ])
       .then((answers: { vehicleToTow: any }) => {
-        // TODO: check if the selected vehicle is the truck
-        // TODO: if it is, log that the truck cannot tow itself then perform actions on the truck to allow the user to select another action
-        // TODO: if it is not, tow the selected vehicle then perform actions on the truck to allow the user to select another action
         if (answers.vehicleToTow instanceof Truck) {
           console.log('The truck cannot tow itself.');
         } else {
           answers.vehicleToTow.tow(answers.vehicleToTow);
           this.performActions();
-
-          
         }
       });
   }
@@ -345,9 +328,7 @@ class Cli {
           type: 'list',
           name: 'action',
           message: 'Select an action',
-          // TODO: add options to tow and wheelie
           default: 'Print details',
-
           choices: [
             'Print details',
             'Start vehicle',
@@ -365,7 +346,6 @@ class Cli {
         },
       ])
       .then((answers: { action: string }) => {
-        // perform the selected action
         if (answers.action === 'Print details') {
           // find the selected vehicle and print its details
           for (let i = 0; i < this.vehicles.length; i++) {
@@ -378,6 +358,7 @@ class Cli {
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i].vin === this.selectedVehicleVin) {
               this.vehicles[i].start();
+              console.log(`${this.vehicles[i].make} ${this.vehicles[i].model} has started.`);
             }
           }
         } else if (answers.action === 'Accelerate 5 MPH') {
@@ -385,6 +366,7 @@ class Cli {
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i].vin === this.selectedVehicleVin) {
               this.vehicles[i].accelerate(5);
+              console.log(`${this.vehicles[i].make} ${this.vehicles[i].model} has accelerated by 5 MPH.`);
             }
           }
         } else if (answers.action === 'Decelerate 5 MPH') {
@@ -392,6 +374,7 @@ class Cli {
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i].vin === this.selectedVehicleVin) {
               this.vehicles[i].decelerate(5);
+              console.log(`${this.vehicles[i].make} ${this.vehicles[i].model} has decelerated by 5 MPH.`);
             }
           }
         } else if (answers.action === 'Stop vehicle') {
@@ -399,6 +382,7 @@ class Cli {
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i].vin === this.selectedVehicleVin) {
               this.vehicles[i].stop();
+              console.log(`${this.vehicles[i].make} ${this.vehicles[i].model} has stopped.`);
             }
           }
         } else if (answers.action === 'Turn right') {
@@ -406,6 +390,7 @@ class Cli {
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i].vin === this.selectedVehicleVin) {
               this.vehicles[i].turn('right');
+              console.log(`${this.vehicles[i].make} ${this.vehicles[i].model} has turned right.`);
             }
           }
         } else if (answers.action === 'Turn left') {
@@ -413,6 +398,7 @@ class Cli {
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i].vin === this.selectedVehicleVin) {
               this.vehicles[i].turn('left');
+              console.log(`${this.vehicles[i].make} ${this.vehicles[i].model} has turned left.`);
             }
           }
         } else if (answers.action === 'Reverse') {
@@ -420,15 +406,10 @@ class Cli {
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i].vin === this.selectedVehicleVin) {
               this.vehicles[i].reverse();
+              console.log(`${this.vehicles[i].make} ${this.vehicles[i].model} is reversing.`);
             }
           }
-        }
-        // TODO: add statements to perform the tow action only if the selected vehicle is a truck. 
-        // Call the findVehicleToTow method to find a vehicle to tow and pass the selected truck as an argument. 
-        // After calling the findVehicleToTow method, you will need to return to avoid instantly calling the 
-        // performActions method again since findVehicleToTow is asynchronous. 
-        // TODO: add statements to perform the wheelie action only if the selected vehicle is a motorbike
-        else if (answers.action === 'Select or create another vehicle') {
+        } else if (answers.action === 'Select or create another vehicle') {
           // start the cli to return to the initial prompt if the user wants to select or create another vehicle
           this.startCli();
           return;
@@ -442,8 +423,8 @@ class Cli {
         } else if (answers.action === 'Wheelie') {
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i].vin === this.selectedVehicleVin && this.vehicles[i] instanceof Motorbike) {
-              console.log('Performing a wheelie!');
-              // Add any additional logic needed for the wheelie action
+              // Type assertion to tell TypeScript this is a Motorbike
+              (this.vehicles[i] as Motorbike).performWheelie();
             }
           }
         } else {
@@ -479,8 +460,6 @@ class Cli {
       });
   }
 }
-
-
 
 // export the Cli class
 export default Cli;
