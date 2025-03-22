@@ -71,5 +71,5 @@ If you have any questions about the project, you can reach me at:
 - GitHub: [melinanev](https://github.com/melinanev)
 - Email: [melina.l.nevarez@gmail.com](mailto:melina.l.nevarez@gmail.com)
 
-- Link to video will be supplied once video is recorded and submitted.  
+- Video Link: [Video](https://watch.screencastify.com/v/d7MPkbcTVRJRZR8oYkgq)
 
