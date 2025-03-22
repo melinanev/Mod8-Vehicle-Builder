@@ -11,23 +11,22 @@ This project is a vehicle builder that allows users to create vehicles and perfo
 - [License](#license)
 - [Contributors](#contributors)
 - [Tests](#tests)
-- [Research](#research)
-- [References](#references)
+- [Questions](#questions)
+
 
 ## Installation
 
 To install the project, run the following command:
 
 - Starter code provided by the course
-- npm install inquirer
 - npm install
-- npm run build
 
 
 ## Usage
 
 To use the project, run the following command:
 
+- cd Develop_8
 - npm start
 
 ## License
@@ -40,19 +39,15 @@ To use the project, run the following command:
 
 ## Tests
 
-- To run the tests, run the following command:
+There are no tests to run currently. 
 
 
-## Research
+## Questions
 
-- What does Interface mean and do? 
-- What does it mean to extend a class? 
-- Understand what super () does and how to correctly add it. 
-- Received suggestion to use instance of; Used CoPilot to nderstand what instanceof is used for and why it was suggested. 
+If you have any questions about the project, you can reach me at:
 
+- GitHub: [melinanev](https://github.com/melinanev)
+- Email: [melina.l.nevarez@gmail.com](mailto:melina.l.nevarez@gmail.com)
 
-## References
+- Link to video will be supplied once video is recorded and submitted.  
 
-- https://www.typescriptlang.org/cheatsheets
-- https://www.typescriptlang.org/docs/handbook/2/classes.html
-- Microsoft CoPilot as a VSCode Extension
